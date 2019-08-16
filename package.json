@@ -1,9 +1,28 @@
 {
-  "name": "react-html-range",
-  "version": "1.0.0",
-  "description": "A simple React component for the HTML range input.",
-  "main": "index.js",
-  "repository": "https://github.com/C-Rodg/react-html-range.git",
-  "author": "<C-Rodg@users.noreply.github.com>",
-  "license": "MIT"
+	"name": "react-html-range",
+	"version": "1.0.0",
+	"description": "A simple React component for the HTML range input.",
+	"main": "index.js",
+	"author": "<C-Rodg@users.noreply.github.com>",
+	"repository": "https://github.com/C-Rodg/react-html-range.git",
+	"bugs": {
+		"url": "https://github.com/C-Rodg/react-html-range/issues"
+	},
+	"license": "MIT",
+	"scripts": {
+		"build": "./node_modules/.bin/babel src --out-file index.js"
+	},
+	"peerDependencies": {
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.5.5",
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"@babel/preset-react": "^7.0.0"
+	},
+	"dependencies": {
+		"styled-components": "^4.3.2"
+	}
 }
