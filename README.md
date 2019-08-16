@@ -6,6 +6,7 @@ A simple React component for the HTML range input.
 
 - build out component completely
 - document readme file
+- hook to always build on push?
 - publish to npm
 
 ## Creator
