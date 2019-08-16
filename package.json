@@ -1,0 +1,9 @@
+{
+  "name": "react-html-range",
+  "version": "1.0.0",
+  "description": "A simple React component for the HTML range input.",
+  "main": "index.js",
+  "repository": "https://github.com/C-Rodg/react-html-range.git",
+  "author": "<C-Rodg@users.noreply.github.com>",
+  "license": "MIT"
+}
