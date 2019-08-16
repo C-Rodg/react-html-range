@@ -1,6 +1,8 @@
+// Libraries
 import React from 'react';
 import styled from 'styled-components';
 
+// Styles
 const RangeWrapper = styled.div`
 	display: block;
 `;
@@ -13,6 +15,7 @@ const RangeInput = styled.input`
 	display: block;
 `;
 
+// Component
 function HtmlRange({
 	min = 0,
 	max = 10,
