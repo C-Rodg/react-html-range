@@ -59,7 +59,7 @@ var RangeInput = _styledComponents["default"].input(_templateObject3(), function
 }, function (props) {
   return props.otherStyles && props.otherStyles.trackFilledColor ? props.otherStyles.trackFilledColor : '#00697b';
 }, function (props) {
-  return props.otherStyles && props.otherStyles.ballColor ? props.otherStyles.ballColor : '#999';
+  return props.otherStyles && props.otherStyles.ballColor ? props.otherStyles.ballColor : '#444';
 }, function (props) {
   return props.otherStyles && props.otherStyles.ballSize ? props.otherStyles.ballSize : '20px';
 }, function (props) {
