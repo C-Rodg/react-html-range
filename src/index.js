@@ -13,7 +13,7 @@ const RangeLabel = styled.label`
 `;
 
 const RangeInput = styled.input`
-	--slider-value: 10;
+	--slider-value: ${props => props.value};
 	display: block;
 	width: 100%;
 	appearance: none;
@@ -54,7 +54,8 @@ function HtmlRange({
 	step = 1,
 	label = '',
 	value = '',
-	onInputChange
+	onInputChange,
+	styles = { wrapperStyles: {}, labelStyles: {}, inputStyles: {} }
 }) {
 	const rangeElement = useRef(null);
 
@@ -71,8 +72,12 @@ function HtmlRange({
 	}, [value]);
 
 	return (
-		<RangeWrapper className="HtmlRange">
-			<RangeLabel htmlFor={name}>{label}</RangeLabel>
+		<RangeWrapper className="HtmlRange" style={wrapperStyles}>
+			{label && (
+				<RangeLabel htmlFor={name} style={labelStyles}>
+					{label}
+				</RangeLabel>
+			)}
 			<RangeInput
 				name={name}
 				type="range"
@@ -82,6 +87,7 @@ function HtmlRange({
 				value={value}
 				onChange={onInputChange}
 				ref={rangeElement}
+				style={inputStyles}
 			/>
 		</RangeWrapper>
 	);
