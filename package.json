@@ -8,6 +8,14 @@
 	"bugs": {
 		"url": "https://github.com/C-Rodg/react-html-range/issues"
 	},
+	"keywords": [
+		"range",
+		"html",
+		"react",
+		"slider",
+		"form",
+		"input"
+	],
 	"license": "MIT",
 	"scripts": {
 		"build": "./node_modules/.bin/babel src --out-file index.js"
