@@ -10,10 +10,17 @@ const RangeWrapper = styled.div`
 const RangeLabel = styled.label`
 	font-weight: 500;
 	font-size: 1rem;
+	margin-bottom: 0.7rem;
+	display: block;
+	text-align: left;
 `;
 
 const RangeInput = styled.input`
-	--slider-value: ${props => props.value};
+    --slider-value: ${props => props.value};
+    --track-height: ${props =>
+			props.otherStyles && props.otherStyles.trackHeight
+				? props.otherStyles.trackHeight
+				: '3px'}
 	--track-empty-color: ${props =>
 		props.otherStyles && props.otherStyles.trackEmptyColor
 			? props.otherStyles.trackEmptyColor
@@ -22,6 +29,10 @@ const RangeInput = styled.input`
 		props.otherStyles && props.otherStyles.trackFilledColor
 			? props.otherStyles.trackFilledColor
 			: '#00697b'};
+	--ball-color: ${props =>
+		props.otherStyles && props.otherStyles.ballColor
+			? props.otherStyles.ballColor
+			: '#444'};
 	--ball-size: ${props =>
 		props.otherStyles && props.otherStyles.ballSize
 			? props.otherStyles.ballSize
@@ -33,6 +44,7 @@ const RangeInput = styled.input`
 	display: block;
 	width: 100%;
 	appearance: none;
+	border-radius: 2px;
 
 	&:focus {
 		outline: none;
@@ -47,19 +59,17 @@ const RangeInput = styled.input`
 		width: var(--ball-size);
 		height: var(--ball-size);
 		border-radius: 50%;
-		margin-top: -50%;
-		background: #999;
+		margin-top: calc( ((var(--ball-size) / 2) * -1) + (var(--track-height) / 2)  );
+		background: var(--ball-color);
 		border: var(--ball-border);
 	}
 
 	&::-webkit-slider-runnable-track {
 		border-radius: 2px;
-		height: ${props =>
-			props.otherStyles && props.otherStyles.trackHeight
-				? props.otherStyles.trackHeight
-				: '3px'};
+		height: var(--track-height);
 		background: linear-gradient(
-			to right var(--track-filled-color) calc(var(--slider-value) * 1%),
+			to right,
+			var(--track-filled-color) calc(var(--slider-value) * 1%),
 			var(--track-empty-color) 0
 		);
 	}

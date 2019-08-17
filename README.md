@@ -60,6 +60,7 @@ Styling can be done by providing an object to the `styles` property of the compo
 
 | Name               | Default          | Purpose                                       |
 | :----------------- | :--------------- | :-------------------------------------------- |
+| `ballColor`        | `#444`           | The color of the range track ball.            |
 | `ballSize`         | `20px`           | The width and height of the range track ball. |
 | `ballBorder`       | `3px solid #fff` | The border surrounding the range track ball.  |
 | `trackHeight`      | `3px`            | The height of the range's track.              |
@@ -76,6 +77,7 @@ const styles = {
 	inputStyles: { width: '400px' },
 	// Custom property object
 	otherStyles: {
+		ballColor: '#444',
 		ballSize: '20px',
 		ballBorder: '3px solid #fff',
 		trackHeight: '3px',
@@ -84,12 +86,6 @@ const styles = {
 	}
 };
 ```
-
-## TODO:
-
-- build out component completely
-- TEST
-- publish to npm
 
 ## Creator
 

@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n\t--slider-value: ", ";\n\t--track-empty-color: ", ";\n\t--track-filled-color: ", ";\n\t--ball-size: ", ";\n\t--ball-border: ", ";\n\tdisplay: block;\n\twidth: 100%;\n\tappearance: none;\n\n\t&:focus {\n\t\toutline: none;\n\t}\n\n\t&::-webkit-slider-runnable-track,\n\t&::-webkit-slider-thumb {\n\t\tappearance: none;\n\t}\n\n\t&::-webkit-slider-thumb {\n\t\twidth: var(--ball-size);\n\t\theight: var(--ball-size);\n\t\tborder-radius: 50%;\n\t\tmargin-top: -50%;\n\t\tbackground: #999;\n\t\tborder: var(--ball-border);\n\t}\n\n\t&::-webkit-slider-runnable-track {\n\t\tborder-radius: 2px;\n\t\theight: ", ";\n\t\tbackground: linear-gradient(\n\t\t\tto right var(--track-filled-color) calc(var(--slider-value) * 1%),\n\t\t\tvar(--track-empty-color) 0\n\t\t);\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n    --slider-value: ", ";\n    --track-height: ", "\n\t--track-empty-color: ", ";\n\t--track-filled-color: ", ";\n\t--ball-color: ", ";\n\t--ball-size: ", ";\n\t--ball-border: ", ";\n\tdisplay: block;\n\twidth: 100%;\n\tappearance: none;\n\tborder-radius: 2px;\n\n\t&:focus {\n\t\toutline: none;\n\t}\n\n\t&::-webkit-slider-runnable-track,\n\t&::-webkit-slider-thumb {\n\t\tappearance: none;\n\t}\n\n\t&::-webkit-slider-thumb {\n\t\twidth: var(--ball-size);\n\t\theight: var(--ball-size);\n\t\tborder-radius: 50%;\n\t\tmargin-top: calc( ((var(--ball-size) / 2) * -1) + (var(--track-height) / 2)  );\n\t\tbackground: var(--ball-color);\n\t\tborder: var(--ball-border);\n\t}\n\n\t&::-webkit-slider-runnable-track {\n\t\tborder-radius: 2px;\n\t\theight: var(--track-height);\n\t\tbackground: linear-gradient(\n\t\t\tto right,\n\t\t\tvar(--track-filled-color) calc(var(--slider-value) * 1%),\n\t\t\tvar(--track-empty-color) 0\n\t\t);\n\t}\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -24,7 +24,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n\tfont-weight: 500;\n\tfont-size: 1rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n\tfont-weight: 500;\n\tfont-size: 1rem;\n\tmargin-bottom: 0.7rem;\n\tdisplay: block;\n\ttext-align: left;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -53,15 +53,17 @@ var RangeLabel = _styledComponents["default"].label(_templateObject2());
 var RangeInput = _styledComponents["default"].input(_templateObject3(), function (props) {
   return props.value;
 }, function (props) {
+  return props.otherStyles && props.otherStyles.trackHeight ? props.otherStyles.trackHeight : '3px';
+}, function (props) {
   return props.otherStyles && props.otherStyles.trackEmptyColor ? props.otherStyles.trackEmptyColor : '#e0e0e0';
 }, function (props) {
   return props.otherStyles && props.otherStyles.trackFilledColor ? props.otherStyles.trackFilledColor : '#00697b';
 }, function (props) {
+  return props.otherStyles && props.otherStyles.ballColor ? props.otherStyles.ballColor : '#999';
+}, function (props) {
   return props.otherStyles && props.otherStyles.ballSize ? props.otherStyles.ballSize : '20px';
 }, function (props) {
   return props.otherStyles && props.otherStyles.ballBorder ? props.otherStyles.ballBorder : '3px solid #fff';
-}, function (props) {
-  return props.otherStyles && props.otherStyles.trackHeight ? props.otherStyles.trackHeight : '3px';
 }); // Component
 
 
