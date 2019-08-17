@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n\t--slider-value: 10;\n\tdisplay: block;\n\twidth: 100%;\n\tappearance: none;\n\n\t&:focus {\n\t\toutline: none;\n\t}\n\n\t&::-webkit-slider-runnable-track,\n\t&::-webkit-slider-thumb {\n\t\tappearance: none;\n\t}\n\n\t&::-webkit-slider-thumb {\n\t\twidth: 20px;\n\t\theight: 20px;\n\t\tborder-radius: 50%;\n\t\tmargin-top: -9px;\n\t\tbackground: #999;\n\t\tborder: 3px solid #fff;\n\t}\n\n\t&::-webkit-slider-runnable-track {\n\t\tborder-radius: 2px;\n\t\theight: 3px;\n\t\tbackground: linear-gradient(\n\t\t\tto right #00697b calc(var(--slider-value) * 1%),\n\t\t\t#e0e0e0 0\n\t\t);\n\t}\n"]);
+  var data = _taggedTemplateLiteral(["\n\t--slider-value: ", ";\n\t--track-empty-color: ", ";\n\t--track-filled-color: ", ";\n\t--ball-size: ", ";\n\t--ball-border: ", ";\n\tdisplay: block;\n\twidth: 100%;\n\tappearance: none;\n\n\t&:focus {\n\t\toutline: none;\n\t}\n\n\t&::-webkit-slider-runnable-track,\n\t&::-webkit-slider-thumb {\n\t\tappearance: none;\n\t}\n\n\t&::-webkit-slider-thumb {\n\t\twidth: var(--ball-size);\n\t\theight: var(--ball-size);\n\t\tborder-radius: 50%;\n\t\tmargin-top: -50%;\n\t\tbackground: #999;\n\t\tborder: var(--ball-border);\n\t}\n\n\t&::-webkit-slider-runnable-track {\n\t\tborder-radius: 2px;\n\t\theight: ", ";\n\t\tbackground: linear-gradient(\n\t\t\tto right var(--track-filled-color) calc(var(--slider-value) * 1%),\n\t\t\tvar(--track-empty-color) 0\n\t\t);\n\t}\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -50,7 +50,19 @@ var RangeWrapper = _styledComponents["default"].div(_templateObject());
 
 var RangeLabel = _styledComponents["default"].label(_templateObject2());
 
-var RangeInput = _styledComponents["default"].input(_templateObject3()); // Component
+var RangeInput = _styledComponents["default"].input(_templateObject3(), function (props) {
+  return props.value;
+}, function (props) {
+  return props.otherStyles && props.otherStyles.trackEmptyColor ? props.otherStyles.trackEmptyColor : '#e0e0e0';
+}, function (props) {
+  return props.otherStyles && props.otherStyles.trackFilledColor ? props.otherStyles.trackFilledColor : '#00697b';
+}, function (props) {
+  return props.otherStyles && props.otherStyles.ballSize ? props.otherStyles.ballSize : '20px';
+}, function (props) {
+  return props.otherStyles && props.otherStyles.ballBorder ? props.otherStyles.ballBorder : '3px solid #fff';
+}, function (props) {
+  return props.otherStyles && props.otherStyles.trackHeight ? props.otherStyles.trackHeight : '3px';
+}); // Component
 
 
 function HtmlRange(_ref) {
@@ -66,7 +78,17 @@ function HtmlRange(_ref) {
       label = _ref$label === void 0 ? '' : _ref$label,
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? '' : _ref$value,
-      onInputChange = _ref.onInputChange;
+      onInputChange = _ref.onInputChange,
+      _ref$styles = _ref.styles;
+  _ref$styles = _ref$styles === void 0 ? {} : _ref$styles;
+  var _ref$styles$wrapperSt = _ref$styles.wrapperStyles,
+      wrapperStyles = _ref$styles$wrapperSt === void 0 ? {} : _ref$styles$wrapperSt,
+      _ref$styles$labelStyl = _ref$styles.labelStyles,
+      labelStyles = _ref$styles$labelStyl === void 0 ? {} : _ref$styles$labelStyl,
+      _ref$styles$inputStyl = _ref$styles.inputStyles,
+      inputStyles = _ref$styles$inputStyl === void 0 ? {} : _ref$styles$inputStyl,
+      _ref$styles$otherStyl = _ref$styles.otherStyles,
+      otherStyles = _ref$styles$otherStyl === void 0 ? {} : _ref$styles$otherStyl;
   var rangeElement = (0, _react.useRef)(null);
   (0, _react.useEffect)(function () {
     var inputEl = rangeElement.current;
@@ -77,9 +99,11 @@ function HtmlRange(_ref) {
     inputEl.style.setProperty('--slider-value', (inputValue - inputMin) / actualized);
   }, [value]);
   return _react["default"].createElement(RangeWrapper, {
-    className: "HtmlRange"
-  }, _react["default"].createElement(RangeLabel, {
-    htmlFor: name
+    className: "HtmlRange",
+    style: wrapperStyles
+  }, label && _react["default"].createElement(RangeLabel, {
+    htmlFor: name,
+    style: labelStyles
   }, label), _react["default"].createElement(RangeInput, {
     name: name,
     type: "range",
@@ -88,7 +112,9 @@ function HtmlRange(_ref) {
     step: step,
     value: value,
     onChange: onInputChange,
-    ref: rangeElement
+    ref: rangeElement,
+    style: inputStyles,
+    otherStyles: otherStyles
   }));
 }
 
